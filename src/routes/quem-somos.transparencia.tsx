@@ -125,6 +125,36 @@ function Transparencia() {
           })}
         </div>
       </section>
+
+      {/* Final CTA — sober, institutional */}
+      <section className="mx-auto max-w-3xl px-4 pb-14 md:pb-20">
+        <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm md:p-10">
+          <DanceOrnament variant="flow" className="pointer-events-none absolute -right-8 -top-6 h-16 w-64 text-primary/10" />
+          <DanceOrnament variant="steps" className="pointer-events-none absolute -left-4 bottom-4 h-4 w-40 text-gold/40" />
+          <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-xl">
+              <div className="flex items-center gap-2 text-primary">
+                <FileText className="h-4 w-4" />
+                <span className="font-display text-[11px] uppercase tracking-[0.28em]">Contato institucional</span>
+              </div>
+              <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">
+                Transparência também se constrói com diálogo
+              </h2>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Caso não encontre o documento ou a informação que procura, entre em contato com nossa equipe.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 md:shrink-0">
+              <Link to="/contato" className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                Solicitar informação
+              </Link>
+              <Link to="/contato" className="inline-flex h-11 items-center rounded-full border border-primary/40 px-5 text-sm font-semibold text-primary hover:bg-primary/10">
+                Entrar em contato
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
