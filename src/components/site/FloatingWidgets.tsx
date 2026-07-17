@@ -66,7 +66,7 @@ export function FloatingWidgets() {
 
       {panel === "cookies" && <CookiePanel onClose={() => setPanel(null)} onSave={savePrefs} />}
       {panel === "access" && <AccessibilityPanel onClose={() => setPanel(null)} />}
-      {panel === "vlibras" && <VLibrasPanel onClose={() => setPanel(null)} />}
+      
     </>
   );
 }
