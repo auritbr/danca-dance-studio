@@ -182,16 +182,92 @@ function ProjectPage() {
       </Section>
 
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="container-mc py-14 text-center">
-          <h2 className="font-display text-2xl font-bold md:text-3xl">Quer participar deste projeto?</h2>
-          <p className="mt-3 text-primary-foreground/85">Entre em contato para saber mais sobre inscrições, parcerias e apoios.</p>
-          <Link to="/contato" className="mt-6 inline-flex h-11 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
-            Fale com a equipe <ArrowRight className="h-4 w-4" />
-          </Link>
+      <ProjectCTA slug={project.slug} />
+    </div>
+  );
+}
+
+function ProjectCTA({ slug }: { slug: string }) {
+  if (slug === "danca-que-transforma") {
+    return (
+      <section className="relative overflow-hidden bg-secondary">
+        <DanceOrnament variant="steps" className="pointer-events-none absolute inset-x-0 top-6 mx-auto h-6 w-[60%] text-primary/25" />
+        <div className="container-mc grid gap-8 py-14 md:grid-cols-12 md:items-center md:py-20">
+          <div className="relative md:col-span-5">
+            <img src={IMG.workshop} alt="Aula do projeto Dança que Transforma" loading="lazy"
+              className="aspect-[4/5] w-full rounded-3xl object-cover shadow-lg" />
+            <DanceOrnament variant="steps" className="pointer-events-none absolute -bottom-4 left-6 h-4 w-40 text-gold" />
+          </div>
+          <div className="md:col-span-7">
+            <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Participe</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Novos caminhos também começam pelo movimento</h2>
+            <p className="mt-4 text-muted-foreground">Conheça as formas de participação e descubra como fazer parte das atividades do projeto.</p>
+            <DanceOrnament variant="flow" className="mt-5 h-3 w-40 text-primary" />
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Link to="/contato" className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                Quero participar <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/contato" className="inline-flex h-11 items-center rounded-full border border-primary/40 px-6 text-sm font-semibold text-primary hover:bg-primary/10">
+                Fale com a equipe
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
-    </div>
+    );
+  }
+  if (slug === "corpo-ritmo-e-movimento") {
+    return (
+      <section className="relative overflow-hidden bg-beige">
+        <DanceOrnament variant="flow" className="pointer-events-none absolute -left-10 top-10 h-16 w-[60rem] text-primary/15" />
+        <DanceOrnament variant="flow" className="pointer-events-none absolute -right-10 bottom-6 h-14 w-[50rem] text-gold/40" />
+        <div className="container-mc relative py-14 md:py-20">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Experiências</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Descubra novas formas de sentir e criar</h2>
+            <p className="mt-4 text-muted-foreground">
+              Participe de experiências que integram corpo, ritmo, criatividade e expressão coletiva.
+            </p>
+            <DanceOrnament variant="rhythm" className="mx-auto mt-5 h-5 w-40 text-primary" />
+            <div className="mt-7 flex flex-wrap justify-center gap-3">
+              <Link to="/projetos" className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+                Conheça as atividades <ArrowRight className="h-4 w-4" />
+              </Link>
+              <Link to="/contato" className="inline-flex h-11 items-center rounded-full border border-primary/40 px-6 text-sm font-semibold text-primary hover:bg-primary/10">
+                Entre em contato
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+  // palco-aberto
+  return (
+    <section className="relative overflow-hidden bg-graphite text-primary-foreground">
+      <img src={IMG.stage} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/85 to-wine/60" />
+      <DanceOrnament variant="curtain" className="pointer-events-none absolute -left-4 top-0 h-40 w-40 text-primary-foreground/25" />
+      <DanceOrnament variant="curtain" className="pointer-events-none absolute -right-4 top-0 h-40 w-40 -scale-x-100 text-primary-foreground/25" />
+      <DanceOrnament variant="spotlight" className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-24 w-40 text-gold/70" />
+      <div className="container-mc relative py-16 md:py-24">
+        <div className="max-w-2xl">
+          <p className="font-display text-xs uppercase tracking-[0.28em] text-gold">Palco</p>
+          <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">O próximo palco pode receber novos movimentos</h2>
+          <p className="mt-4 text-primary-foreground/85">
+            Acompanhe as apresentações, conheça as oportunidades de participação e fortaleça a circulação cultural.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link to="/contato" className="inline-flex h-11 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
+              Quero participar <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/contato" className="inline-flex h-11 items-center rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">
+              Fale com a produção
+            </Link>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
