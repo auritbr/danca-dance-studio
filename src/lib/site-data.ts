@@ -51,8 +51,7 @@ export const NAV = [
     label: "Quem Somos",
     to: "/quem-somos" as const,
     children: [
-      { label: "Apresentação", to: "/quem-somos" as const },
-      { label: "Nossa História", to: "/quem-somos/historia" as const },
+      { label: "Quem Somos", to: "/quem-somos" as const },
       { label: "Equipe", to: "/quem-somos/equipe" as const },
       { label: "Transparência", to: "/quem-somos/transparencia" as const },
     ],
