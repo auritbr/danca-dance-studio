@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Users, Calendar, HeartHandshake, Music, Compass, DoorOpen, Layers, MapPin } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowRight, Sparkles, Users, HeartHandshake, Music, Compass, DoorOpen, MapPin } from "lucide-react";
 import { DanceOrnament } from "@/components/site/DanceOrnament";
 import { IMG, MODALITIES, PROJECTS, NEWS } from "@/lib/site-data";
 
