@@ -213,8 +213,6 @@ function Transparencia() {
         </div>
       </section>
 
-      {/* Ensure Section import remains used for tree-shaking-safe build if needed elsewhere */}
-      <Section className="hidden"><span /></Section>
     </div>
   );
 }
