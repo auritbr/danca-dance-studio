@@ -1,4 +1,5 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { DanceOrnament } from "@/components/site/DanceOrnament";
 import { InternalHero, Section } from "@/components/site/InternalHero";
 import { IMG, PROJECTS, MODALITIES } from "@/lib/site-data";
 import { ArrowRight, Calendar, Users, MapPin, Target, ClipboardList, Sparkles } from "lucide-react";
