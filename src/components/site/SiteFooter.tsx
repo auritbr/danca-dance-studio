@@ -40,8 +40,7 @@ export function SiteFooter() {
         </div>
 
         <FooterCol title="Institucional">
-          <FooterLink to="/quem-somos">Apresentação</FooterLink>
-          <FooterLink to="/quem-somos/historia">Nossa história</FooterLink>
+          <FooterLink to="/quem-somos">Quem Somos</FooterLink>
           <FooterLink to="/quem-somos/equipe">Equipe</FooterLink>
           <FooterLink to="/quem-somos/transparencia">Transparência</FooterLink>
           <FooterLink to="/noticias">Notícias</FooterLink>
@@ -63,16 +62,6 @@ export function SiteFooter() {
         </FooterCol>
       </div>
 
-      <div className="border-t border-primary-foreground/10">
-        <div className="container-mc py-4">
-          <div className="text-[11px] uppercase tracking-[0.22em] text-primary-foreground/60">Parceiros e apoiadores</div>
-          <div className="mt-3 flex flex-wrap items-center gap-6 opacity-80">
-            {["Secretaria de Cultura", "Instituto Cena Viva", "Fundação Passo", "Rede Cultura Comunitária", "Teatro Municipal"].map((p) => (
-              <span key={p} className="font-display text-sm text-primary-foreground/80">{p}</span>
-            ))}
-          </div>
-        </div>
-      </div>
 
       <div className="border-t border-primary-foreground/10">
         <div className="container-mc flex flex-col gap-3 py-5 text-xs text-primary-foreground/70 md:flex-row md:items-center md:justify-between">

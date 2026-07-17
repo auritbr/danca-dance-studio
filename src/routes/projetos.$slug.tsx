@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
+import { DanceOrnament } from "@/components/site/DanceOrnament";
 import { InternalHero, Section } from "@/components/site/InternalHero";
-import { IMG, PROJECTS, NEWS, MODALITIES } from "@/lib/site-data";
+import { IMG, PROJECTS, MODALITIES } from "@/lib/site-data";
 import { ArrowRight, Calendar, Users, MapPin, Target, ClipboardList, Sparkles } from "lucide-react";
 
 const DETAILS: Record<string, {
@@ -180,19 +181,6 @@ function ProjectPage() {
         </div>
       </Section>
 
-      <Section eyebrow="Notícias" title="Notícias relacionadas">
-        <div className="grid gap-4 md:grid-cols-3">
-          {NEWS.slice(0, 3).map((n) => (
-            <Link key={n.slug} to="/noticias/$slug" params={{ slug: n.slug }} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-              <img src={n.image} alt={n.title} className="aspect-[16/10] w-full object-cover" loading="lazy" />
-              <div className="p-4">
-                <div className="text-[10px] uppercase tracking-widest text-primary">{n.tag}</div>
-                <h3 className="mt-1 font-display text-sm font-semibold text-foreground group-hover:text-primary">{n.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
 
       <section className="bg-primary text-primary-foreground">
         <div className="container-mc py-14 text-center">
@@ -218,7 +206,9 @@ function Meta({ icon, label, value }: { icon: React.ReactNode; label: string; va
 
 function Card({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary via-gold to-primary/40" />
+      <DanceOrnament variant="flow" className="pointer-events-none absolute -right-4 -top-2 h-10 w-32 text-primary/10" />
       <h3 className="font-display text-base font-semibold text-primary">{title}</h3>
       <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
         {items.map((it) => <li key={it} className="flex gap-2"><span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />{it}</li>)}
@@ -226,3 +216,4 @@ function Card({ title, items }: { title: string; items: string[] }) {
     </div>
   );
 }
+

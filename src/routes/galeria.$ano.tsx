@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { InternalHero } from "@/components/site/InternalHero";
-import { PageBreadcrumbs } from "@/components/site/PageBreadcrumbs";
 import { GalleryYearView } from "@/components/site/GalleryYearView";
 import { IMG } from "@/lib/site-data";
 
@@ -27,10 +26,8 @@ function GaleriaAno() {
         description={`Registros das oficinas, apresentações, encontros formativos e ações culturais realizadas ao longo de ${ano}.`}
         image={IMG.stage}
       />
-      <PageBreadcrumbs
-        items={[{ label: "Início", to: "/" }, { label: "Galeria", to: "/galeria" }, { label: ano }]}
-      />
       <GalleryYearView year={ano} />
     </div>
   );
 }
+
