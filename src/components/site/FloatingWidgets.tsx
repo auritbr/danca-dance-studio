@@ -30,9 +30,6 @@ export function FloatingWidgets() {
         <FloatBtn label="Recursos de acessibilidade" onClick={() => setPanel("access")}>
           <Accessibility className="h-5 w-5" />
         </FloatBtn>
-        <FloatBtn label="Tradução em Libras (VLibras)" onClick={() => setPanel("vlibras")}>
-          <Hand className="h-5 w-5" />
-        </FloatBtn>
       </div>
 
       {/* Right column: WhatsApp */}
