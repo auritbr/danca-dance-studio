@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Sparkles, Users, Calendar, MapPin, HeartHandshake, Music, Compass, Award, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState } from "react";
-import { IMG, MODALITIES, PROJECTS, NEWS, EVENTS, TESTIMONIALS } from "@/lib/site-data";
+import { ArrowRight, Sparkles, Users, HeartHandshake, Music, Compass, DoorOpen, MapPin } from "lucide-react";
+import { DanceOrnament } from "@/components/site/DanceOrnament";
+import { IMG, MODALITIES, PROJECTS, NEWS } from "@/lib/site-data";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -21,144 +21,145 @@ function Home() {
   return (
     <div>
       <Hero />
-      <Indicators />
       <AboutSection />
       <Modalities />
       <FeaturedProjects />
       <Impact />
-      <Agenda />
       <NewsPreview />
-      <GalleryPreview />
-      <Testimonials />
+      <GalleryCTA />
       <FinalCTA />
     </div>
   );
 }
 
+/* ------------------------------- HERO ---------------------------------- */
 function Hero() {
   return (
-    <section className="relative overflow-hidden">
+    <section className="relative overflow-hidden bg-graphite text-primary-foreground">
       <div className="absolute inset-0">
-        <img src={IMG.hero} alt="" aria-hidden="true" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-wine/70 to-graphite/90" />
-      </div>
-      <div className="container-mc relative py-20 md:py-28">
-        <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-primary-foreground backdrop-blur">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold" /> Ponto de Cultura
-        </span>
-        <h1 className="mt-5 max-w-3xl font-display text-4xl font-bold leading-[1.05] text-primary-foreground md:text-6xl">
-          Movimento que transforma histórias
-        </h1>
-        <p className="mt-5 max-w-2xl text-lg text-primary-foreground/85">
-          Dança, formação cultural e oportunidades para fortalecer pessoas, ampliar repertórios e aproximar a comunidade da arte.
-        </p>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Link to="/quem-somos" className="inline-flex h-12 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
-            Conheça nosso trabalho <ArrowRight className="h-4 w-4" />
-          </Link>
-          <Link to="/projetos" className="inline-flex h-12 items-center gap-2 rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">
-            Veja os projetos
-          </Link>
+        <img
+          src={IMG.rehearsal}
+          alt=""
+          aria-hidden="true"
+          className="h-full w-full object-cover motion-safe:animate-[hero-zoom_18s_ease-out_forwards]"
+        />
+        {/* studio-door light shaft */}
+        <div className="absolute inset-y-0 left-1/2 hidden w-[46%] -translate-x-4 md:block">
+          <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-graphite/95 via-graphite/40 to-transparent" />
+          <div className="absolute inset-y-0 left-[38%] w-px bg-gold/60 shadow-[0_0_28px_6px_hsl(var(--gold)/0.35)]" />
         </div>
-        <p className="mt-8 flex items-center gap-2 text-sm text-primary-foreground/80">
-          <Sparkles className="h-4 w-4 text-gold" />
-          Arte, formação e cidadania por meio da dança.
-        </p>
+        <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/80 to-graphite/30 md:from-graphite/95 md:via-graphite/60 md:to-transparent" />
       </div>
-    </section>
-  );
-}
 
-function Indicators() {
-  const items = [
-    { icon: <Award className="h-5 w-5" />, value: "10", label: "anos de atuação" },
-    { icon: <Users className="h-5 w-5" />, value: "300+", label: "participantes atendidos" },
-    { icon: <Music className="h-5 w-5" />, value: "20", label: "apresentações realizadas" },
-    { icon: <Compass className="h-5 w-5" />, value: "6", label: "modalidades de dança" },
-  ];
-  return (
-    <section className="border-y border-border bg-beige">
-      <div className="container-mc grid grid-cols-2 gap-6 py-10 md:grid-cols-4">
-        {items.map((it) => (
-          <div key={it.label} className="flex items-center gap-3">
-            <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">{it.icon}</div>
-            <div className="min-w-0">
-              <div className="font-display text-2xl font-bold text-primary">{it.value}</div>
-              <div className="text-xs text-muted-foreground">{it.label}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function AboutSection() {
-  const diff = [
-    { title: "Formação acessível", desc: "Aulas gratuitas e turmas plurais em diferentes linguagens da dança." },
-    { title: "Valorização de talentos", desc: "Apoio à criação, à circulação e ao desenvolvimento artístico." },
-    { title: "Atuação comunitária", desc: "Ações culturais em espaços públicos, escolas e territórios da cidade." },
-  ];
-  return (
-    <section className="container-mc py-16 md:py-24">
-      <div className="grid gap-12 md:grid-cols-2 md:items-center">
-        <div className="relative">
-          <img src={IMG.ensemble} alt="Ensaio coletivo do Movimento em Cena" className="aspect-[4/5] w-full rounded-2xl object-cover shadow-lg" loading="lazy" />
-          <img src={IMG.duo} alt="Duo em apresentação" className="absolute -bottom-8 -left-4 hidden aspect-square w-40 rounded-xl border-4 border-background object-cover shadow-lg md:block" loading="lazy" />
-          <img src={IMG.backstage} alt="Bastidor de apresentação" className="absolute -right-4 top-6 hidden aspect-square w-40 rounded-xl border-4 border-background object-cover shadow-lg md:block" loading="lazy" />
-        </div>
-        <div>
-          <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Sobre o Ponto de Cultura</p>
-          <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-4xl">
-            Dança como expressão, formação e transformação
-          </h2>
-          <p className="mt-5 text-muted-foreground">
-            O Movimento em Cena desenvolve ações de formação, criação e circulação artística, promovendo o acesso à dança e
-            fortalecendo vínculos entre cultura, educação e comunidade.
+      <div className="container-mc relative grid gap-8 py-20 md:min-h-[560px] md:grid-cols-12 md:items-center md:py-28">
+        <div className="md:col-span-7 lg:col-span-6">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 px-3 py-1 text-xs font-medium uppercase tracking-[0.22em] text-primary-foreground backdrop-blur">
+            <DoorOpen className="h-3.5 w-3.5 text-gold" /> Ponto de Cultura
+          </span>
+          <h1 className="mt-5 font-display text-4xl font-bold leading-[1.05] text-primary-foreground md:text-5xl lg:text-6xl">
+            Abra espaço para <span className="italic text-gold">novos movimentos</span>
+          </h1>
+          <p className="mt-5 max-w-xl text-lg text-primary-foreground/85">
+            Um lugar onde a dança se transforma em formação, expressão, encontro e novas possibilidades para toda a comunidade.
           </p>
-          <ul className="mt-6 space-y-3">
-            {diff.map((d) => (
-              <li key={d.title} className="flex gap-3">
-                <span className="mt-2 inline-block h-1.5 w-6 shrink-0 rounded-full bg-gold" />
-                <div><div className="font-medium text-foreground">{d.title}</div><div className="text-sm text-muted-foreground">{d.desc}</div></div>
-              </li>
-            ))}
-          </ul>
-          <Link to="/quem-somos" className="mt-7 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-            Conheça nossa história <ArrowRight className="h-4 w-4" />
-          </Link>
+          <DanceOrnament variant="flow" className="mt-6 h-3 w-40 text-gold" />
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link to="/quem-somos" className="inline-flex h-12 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
+              Conheça nosso trabalho <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/projetos" className="inline-flex h-12 items-center gap-2 rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">
+              Explore os projetos
+            </Link>
+          </div>
+          <p className="mt-6 flex items-center gap-2 text-sm text-primary-foreground/80">
+            <Sparkles className="h-4 w-4 text-gold" />
+            Entre, descubra e encontre novas formas de se expressar.
+          </p>
+        </div>
+
+        {/* Studio-door visual insert */}
+        <div className="relative hidden md:col-span-5 md:block lg:col-span-6">
+          <div className="relative mx-auto aspect-[4/5] w-full max-w-md">
+            <div className="absolute inset-0 rounded-[2rem] border border-primary-foreground/15 bg-gradient-to-b from-primary-foreground/5 to-transparent backdrop-blur-[2px]" />
+            <div className="absolute inset-6 overflow-hidden rounded-[1.5rem] border border-gold/40 shadow-2xl">
+              <img src={IMG.stage} alt="Entrada de um estúdio de dança iluminado" className="h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/70 via-transparent to-transparent" />
+            </div>
+            <DanceOrnament variant="spotlight" className="absolute -top-4 left-10 h-16 w-24 text-gold" />
+            <DanceOrnament variant="curtain" className="absolute -bottom-4 right-6 h-16 w-16 text-primary-foreground/70" />
+            <DanceOrnament variant="steps" className="absolute -left-6 top-1/2 h-4 w-24 -rotate-90 text-gold/80" />
+          </div>
         </div>
       </div>
+
+      {/* smooth transition to next section */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-background" />
+
+      <style>{`
+        @keyframes hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        @media (prefers-reduced-motion: reduce) {
+          .motion-safe\\:animate-\\[hero-zoom_18s_ease-out_forwards\\] { animation: none !important; }
+        }
+      `}</style>
     </section>
   );
 }
 
-function Modalities() {
+/* ---------------------------- ABOUT SECTION ---------------------------- */
+function AboutSection() {
+  const highlights = [
+    { icon: <Sparkles className="h-4 w-4" />, title: "Formação artística acessível", text: "Aulas e oficinas abertas à comunidade." },
+    { icon: <HeartHandshake className="h-4 w-4" />, title: "Criação e expressão coletiva", text: "Processos que valorizam a autoria dos participantes." },
+    { icon: <MapPin className="h-4 w-4" />, title: "Cultura presente na comunidade", text: "Ações em praças, escolas e centros culturais." },
+  ];
   return (
-    <section className="bg-secondary">
-      <div className="container-mc py-16 md:py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Modalidades</p>
-          <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Encontre seu movimento</h2>
-          <p className="mt-3 text-muted-foreground">Conheça algumas das modalidades desenvolvidas em nossas oficinas e atividades formativas.</p>
+    <section className="relative overflow-hidden">
+      <DanceOrnament variant="flow" className="pointer-events-none absolute left-[-4rem] top-24 hidden h-24 w-[40rem] text-primary/10 md:block" />
+      <div className="container-mc relative py-16 md:py-24">
+        <div className="grid gap-12 md:grid-cols-12 md:items-end">
+          <div className="md:col-span-5">
+            <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Sobre o Ponto de Cultura</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">
+              Dança que aproxima, <span className="text-primary">forma</span> e transforma
+            </h2>
+            <p className="mt-5 text-muted-foreground">
+              O Movimento em Cena promove formação artística, criação coletiva e circulação cultural por meio da dança,
+              ampliando o acesso à arte e fortalecendo vínculos entre pessoas, territórios e comunidade.
+            </p>
+            <Link to="/quem-somos" className="mt-7 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+              Conheça quem somos <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          {/* Editorial image collage */}
+          <div className="relative md:col-span-7">
+            <div className="grid grid-cols-6 grid-rows-6 gap-3 md:gap-4">
+              <img src={IMG.ensemble} alt="Ensaio coletivo" loading="lazy"
+                className="col-span-4 row-span-6 h-full w-full rounded-3xl object-cover shadow-lg" />
+              <img src={IMG.workshop} alt="Aula em andamento" loading="lazy"
+                className="col-span-2 row-span-3 h-full w-full rounded-2xl object-cover shadow-md" />
+              <img src={IMG.community} alt="Ação comunitária" loading="lazy"
+                className="col-span-2 row-span-3 h-full w-full rounded-2xl object-cover shadow-md" />
+            </div>
+            <DanceOrnament variant="spotlight" className="pointer-events-none absolute -top-6 -right-4 h-16 w-24 text-gold" />
+            <DanceOrnament variant="steps" className="pointer-events-none absolute -bottom-4 left-4 h-4 w-40 text-primary/60" />
+          </div>
         </div>
-        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {MODALITIES.map((m) => (
-            <article key={m.slug} className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-shadow hover:shadow-md">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img src={m.image} alt={`Aula de ${m.name}`} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
-                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-graphite/70 to-transparent" />
-                <span className="absolute left-3 top-3 rounded-full bg-primary-foreground/90 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">{m.level}</span>
+
+        <div className="mt-12 grid gap-4 md:grid-cols-3">
+          {highlights.map((h, i) => (
+            <div key={h.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card p-5 shadow-sm">
+              <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary via-gold to-primary/30" />
+              <div className="flex items-center gap-3">
+                <span className="grid h-9 w-9 place-items-center rounded-full bg-primary/10 text-primary">{h.icon}</span>
+                <h3 className="font-display text-sm font-semibold text-foreground">{h.title}</h3>
               </div>
-              <div className="flex flex-1 flex-col p-5">
-                <h3 className="font-display text-lg font-semibold text-foreground">{m.name}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{m.desc}</p>
-                <div className="mt-3 text-xs text-muted-foreground">Faixa etária: {m.age}</div>
-                <Link to="/projetos" className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline">
-                  Conheça a modalidade <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </article>
+              <p className="mt-2 text-sm text-muted-foreground">{h.text}</p>
+              <DanceOrnament
+                variant={i === 0 ? "barre" : i === 1 ? "flow" : "steps"}
+                className="pointer-events-none absolute -right-2 -bottom-2 h-8 w-24 text-primary/10"
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -166,21 +167,102 @@ function Modalities() {
   );
 }
 
+/* ------------------------------ MODALITIES ----------------------------- */
+function Modalities() {
+  const flourish = ["barre", "flow", "steps", "rhythm", "spotlight", "curtain"] as const;
+  return (
+    <section className="relative bg-secondary">
+      <DanceOrnament variant="flow" className="pointer-events-none absolute inset-x-0 top-10 mx-auto hidden h-6 w-[60%] text-primary/10 md:block" />
+      <div className="container-mc py-16 md:py-24">
+        <div className="mx-auto max-w-2xl text-center">
+          <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Modalidades</p>
+          <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Encontre seu movimento</h2>
+          <p className="mt-3 text-muted-foreground">
+            Conheça as modalidades que fazem parte das nossas ações formativas e descubra novas possibilidades de expressão por meio da dança.
+          </p>
+        </div>
+
+        {/* Mobile: horizontal snap-carousel. md+: grid */}
+        <div
+          role="region"
+          aria-label="Modalidades de dança"
+          className="mt-10 -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:snap-none md:grid-cols-2 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3"
+        >
+          {MODALITIES.map((m, i) => (
+            <article
+              key={m.slug}
+              className="group relative flex min-h-[420px] w-[78%] shrink-0 snap-center flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow duration-300 hover:shadow-xl focus-within:shadow-xl md:w-auto md:min-h-[440px]"
+            >
+              <div className="absolute inset-0">
+                <img
+                  src={m.image}
+                  alt={`Aula de ${m.name}`}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-graphite via-graphite/55 to-graphite/10" />
+              </div>
+
+              <div className="relative flex h-full flex-col p-5 text-primary-foreground">
+                <div className="flex items-center justify-between">
+                  <span className="rounded-full bg-primary-foreground/95 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary">
+                    {m.level}
+                  </span>
+                  <DanceOrnament variant={flourish[i % flourish.length]} className="h-6 w-16 text-gold" />
+                </div>
+                <h3 className="mt-4 font-display text-2xl font-semibold">{m.name}</h3>
+
+                <div className="mt-auto space-y-3">
+                  <p className="text-sm text-primary-foreground/85">{m.desc}</p>
+                  <div className="grid grid-cols-2 gap-2 text-[11px] uppercase tracking-widest text-primary-foreground/70">
+                    <div>
+                      <div className="text-primary-foreground/60">Público</div>
+                      <div className="mt-0.5 text-xs font-medium normal-case tracking-normal text-primary-foreground">{m.age}</div>
+                    </div>
+                    <div>
+                      <div className="text-primary-foreground/60">Nível</div>
+                      <div className="mt-0.5 text-xs font-medium normal-case tracking-normal text-primary-foreground">{m.level}</div>
+                    </div>
+                  </div>
+                  <Link
+                    to="/projetos"
+                    aria-label={`Conheça a modalidade ${m.name}`}
+                    className="inline-flex h-10 items-center gap-2 rounded-full bg-primary-foreground px-4 text-xs font-semibold text-primary hover:bg-primary-foreground/90"
+                  >
+                    Conheça <ArrowRight className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-3 text-center text-xs text-muted-foreground md:hidden">Deslize para o lado para ver mais →</p>
+      </div>
+    </section>
+  );
+}
+
+/* ---------------------------- FEATURED PROJECTS ------------------------ */
 function FeaturedProjects() {
+  const ornaments = ["steps", "flow", "spotlight"] as const;
   return (
     <section className="container-mc py-16 md:py-24">
       <div className="mx-auto max-w-2xl text-center">
         <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Projetos em destaque</p>
-        <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Projetos que colocam a cultura em movimento</h2>
+        <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Projetos que colocam a cultura em movimento</h2>
       </div>
       <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {PROJECTS.map((p) => (
-          <article key={p.slug} className="flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-            <div className="relative aspect-[16/10] overflow-hidden">
-              <img src={p.image} alt={p.title} className="h-full w-full object-cover" loading="lazy" />
+        {PROJECTS.map((p, i) => (
+          <article key={p.slug} className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow hover:shadow-xl">
+            <div className="relative aspect-[16/11] overflow-hidden">
+              <img src={p.image} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <div className="absolute inset-0 bg-gradient-to-t from-graphite/60 via-transparent to-transparent" />
               <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-primary-foreground">{p.category}</span>
+              <DanceOrnament variant={ornaments[i % ornaments.length]} className="pointer-events-none absolute bottom-3 right-3 h-8 w-24 text-gold opacity-80" />
             </div>
-            <div className="flex flex-1 flex-col p-6">
+            <div className="relative flex flex-1 flex-col p-6">
+              <span aria-hidden className="absolute inset-x-6 -top-0.5 h-[2px] bg-gradient-to-r from-primary via-gold to-transparent" />
               <h3 className="font-display text-lg font-semibold text-foreground">{p.title}</h3>
               <p className="mt-2 text-sm text-muted-foreground">{p.summary}</p>
               <div className="mt-4 text-xs text-muted-foreground">Público: {p.audience}</div>
@@ -195,21 +277,23 @@ function FeaturedProjects() {
   );
 }
 
+/* ------------------------------- IMPACT -------------------------------- */
 function Impact() {
   const items = [
     { icon: <HeartHandshake className="h-5 w-5" />, title: "Acesso gratuito à cultura", desc: "Ações formativas abertas à comunidade, com foco em democratizar a dança." },
     { icon: <Sparkles className="h-5 w-5" />, title: "Desenvolvimento artístico", desc: "Formação continuada em técnica, criação e circulação." },
     { icon: <Users className="h-5 w-5" />, title: "Fortalecimento de vínculos", desc: "Encontros que aproximam gerações, famílias e territórios." },
-    { icon: <MapPin className="h-5 w-5" />, title: "Ocupação de espaços públicos", desc: "Apresentações e vivências em praças, escolas e centros culturais." },
+    { icon: <Compass className="h-5 w-5" />, title: "Ocupação de espaços públicos", desc: "Apresentações e vivências em praças, escolas e centros culturais." },
   ];
   return (
     <section className="relative overflow-hidden bg-graphite text-primary-foreground">
       <img src={IMG.community} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover opacity-25" />
       <div className="absolute inset-0 bg-gradient-to-br from-primary/85 via-graphite/85 to-wine/70" />
+      <DanceOrnament variant="flow" className="pointer-events-none absolute inset-x-0 bottom-6 mx-auto h-6 w-[70%] text-gold/40" />
       <div className="container-mc relative grid gap-10 py-16 md:grid-cols-2 md:items-center md:py-24">
         <div>
           <p className="font-display text-xs uppercase tracking-[0.28em] text-gold">Impacto Social</p>
-          <h2 className="mt-2 font-display text-2xl font-bold md:text-4xl">Quando a dança chega, novas possibilidades começam</h2>
+          <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Quando a dança chega, novas possibilidades começam</h2>
           <p className="mt-4 max-w-lg text-primary-foreground/85">
             Nosso trabalho articula formação artística e ações sociais para fortalecer trajetórias e ampliar o alcance da cultura.
           </p>
@@ -228,39 +312,7 @@ function Impact() {
   );
 }
 
-function Agenda() {
-  return (
-    <section className="container-mc py-16 md:py-24">
-      <div className="flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Agenda</p>
-          <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Próximas atividades</h2>
-        </div>
-        <Link to="/noticias" className="text-sm font-semibold text-primary hover:underline">Ver agenda completa →</Link>
-      </div>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        {EVENTS.map((e) => (
-          <article key={e.title} className="flex gap-4 rounded-2xl border border-border bg-card p-5 shadow-sm">
-            <div className="grid shrink-0 place-items-center rounded-xl bg-primary p-3 text-primary-foreground">
-              <div className="font-display text-lg font-bold leading-none">{e.date.split(" ")[0]}</div>
-              <div className="mt-1 text-[10px] uppercase tracking-widest">{e.date.split(" ")[1]}</div>
-            </div>
-            <div className="min-w-0">
-              <span className="inline-block rounded-full bg-lilac px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-lilac-foreground">{e.category}</span>
-              <h3 className="mt-2 font-display text-base font-semibold text-foreground">{e.title}</h3>
-              <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-                <span className="inline-flex items-center gap-1"><Calendar className="h-3 w-3" /> {e.time}</span>
-                <span className="inline-flex items-center gap-1"><MapPin className="h-3 w-3" /> {e.place}</span>
-              </div>
-              <Link to="/noticias" className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline">Ver detalhes <ArrowRight className="h-3 w-3" /></Link>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
+/* ------------------------------- NEWS ---------------------------------- */
 function NewsPreview() {
   const [main, ...rest] = NEWS;
   const secondary = rest.slice(0, 3);
@@ -270,12 +322,12 @@ function NewsPreview() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Notícias</p>
-            <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Notícias e acontecimentos</h2>
+            <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Notícias e acontecimentos</h2>
           </div>
           <Link to="/noticias" className="text-sm font-semibold text-primary hover:underline">Ver todas as notícias →</Link>
         </div>
         <div className="mt-10 grid gap-6 lg:grid-cols-2">
-          <Link to="/noticias/$slug" params={{ slug: main.slug }} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
+          <Link to="/noticias/$slug" params={{ slug: main.slug }} className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img src={main.image} alt={main.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
             </div>
@@ -309,69 +361,45 @@ function NewsPreview() {
   );
 }
 
-function GalleryPreview() {
-  const years = ["2026", "2025", "2024"];
+/* ---------------------------- GALLERY CTA ------------------------------ */
+function GalleryCTA() {
+  const years = ["2026", "2025", "2024", "2023"];
   return (
-    <section className="container-mc py-16 md:py-24">
-      <div className="mx-auto max-w-2xl text-center">
-        <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Galeria</p>
-        <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Memórias em movimento</h2>
-        <p className="mt-3 text-muted-foreground">Registros de aulas, oficinas, apresentações, bastidores e ações comunitárias.</p>
-      </div>
-      <div className="mt-8 flex flex-wrap justify-center gap-2">
-        {years.map((y) => (
-          <Link key={y} to="/galeria/$ano" params={{ ano: y }} className="rounded-full border border-border bg-card px-5 py-2 text-sm font-semibold text-foreground hover:border-primary hover:text-primary">
-            {y}
-          </Link>
-        ))}
-      </div>
-      <div className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-4">
-        {[IMG.workshop, IMG.stage, IMG.rehearsal, IMG.community, IMG.duo, IMG.backstage, IMG.group, IMG.kids].map((src, i) => (
-          <div key={i} className="overflow-hidden rounded-xl">
-            <img src={src} alt={`Registro fotográfico ${i + 1}`} className="aspect-square w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
-          </div>
-        ))}
-      </div>
-      <div className="mt-8 text-center">
-        <Link to="/galeria" className="inline-flex h-11 items-center gap-2 rounded-full border border-primary bg-transparent px-5 text-sm font-semibold text-primary hover:bg-primary hover:text-primary-foreground">
-          Acessar galeria completa <ArrowRight className="h-4 w-4" />
-        </Link>
-      </div>
-    </section>
-  );
-}
-
-function Testimonials() {
-  const [i, setI] = useState(0);
-  const t = TESTIMONIALS[i];
-  return (
-    <section className="bg-secondary">
+    <section className="relative overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-background via-secondary to-background" />
+      <DanceOrnament variant="flow" className="pointer-events-none absolute -left-10 top-10 hidden h-20 w-[50rem] text-primary/10 md:block" />
       <div className="container-mc py-16 md:py-24">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Depoimentos</p>
-          <h2 className="mt-2 font-display text-2xl font-bold text-foreground md:text-3xl">Vozes do Movimento em Cena</h2>
-          <blockquote className="mt-8 rounded-2xl border border-border bg-card p-8 shadow-sm">
-            <p className="font-display text-lg text-foreground md:text-xl">“{t.text}”</p>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <img src={t.image} alt="" className="h-12 w-12 rounded-full object-cover" />
-              <div className="text-left">
-                <div className="text-sm font-semibold text-foreground">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.role}</div>
-              </div>
-            </div>
-          </blockquote>
-          <div className="mt-6 flex items-center justify-center gap-3">
-            <button onClick={() => setI((i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)} aria-label="Depoimento anterior" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-accent">
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <div className="flex gap-1.5">
-              {TESTIMONIALS.map((_, idx) => (
-                <button key={idx} aria-label={`Ir para depoimento ${idx + 1}`} onClick={() => setI(idx)} className={`h-2 rounded-full transition-all ${idx === i ? "w-6 bg-primary" : "w-2 bg-muted"}`} />
+        <div className="grid gap-10 md:grid-cols-12 md:items-center">
+          <div className="md:col-span-5">
+            <p className="font-display text-xs uppercase tracking-[0.28em] text-primary">Galeria</p>
+            <h2 className="mt-2 font-display text-3xl font-bold text-foreground md:text-4xl">Memórias que continuam em movimento</h2>
+            <p className="mt-4 text-muted-foreground">
+              Aulas, encontros, apresentações e processos criativos registrados ao longo da nossa trajetória.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+              {years.map((y, i) => (
+                <span key={y} className="inline-flex items-center gap-2">
+                  <span className="font-display text-base font-semibold text-primary">{y}</span>
+                  {i < years.length - 1 && <span className="text-gold">·</span>}
+                </span>
               ))}
             </div>
-            <button onClick={() => setI((i + 1) % TESTIMONIALS.length)} aria-label="Próximo depoimento" className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card hover:bg-accent">
-              <ChevronRight className="h-5 w-5" />
-            </button>
+            <Link to="/galeria" className="mt-7 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+              Conheça nossa galeria <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="relative md:col-span-7">
+            <div className="relative mx-auto aspect-[5/4] w-full max-w-xl">
+              <img src={IMG.stage} alt="Apresentação em palco" loading="lazy"
+                className="absolute inset-0 h-full w-full rounded-[2rem] object-cover shadow-xl" />
+              <img src={IMG.duo} alt="Duo em cena" loading="lazy"
+                className="absolute -left-4 bottom-6 h-40 w-40 rounded-2xl border-4 border-background object-cover shadow-lg sm:h-48 sm:w-48" />
+              <img src={IMG.backstage} alt="Bastidor de apresentação" loading="lazy"
+                className="absolute -right-2 -top-4 h-36 w-28 rotate-3 rounded-2xl border-4 border-background object-cover shadow-lg sm:h-44 sm:w-36" />
+              <DanceOrnament variant="steps" className="pointer-events-none absolute -bottom-6 right-10 h-5 w-40 text-primary/60" />
+              <DanceOrnament variant="spotlight" className="pointer-events-none absolute -top-6 left-16 h-16 w-24 text-gold/70" />
+            </div>
           </div>
         </div>
       </div>
@@ -379,19 +407,37 @@ function Testimonials() {
   );
 }
 
+/* ------------------------------ FINAL CTA ------------------------------ */
 function FinalCTA() {
   return (
     <section className="container-mc py-16 md:py-24">
-      <div className="relative overflow-hidden rounded-3xl bg-primary p-8 text-primary-foreground md:p-16">
-        <div className="absolute inset-0 opacity-20">
-          <img src={IMG.stage} alt="" aria-hidden="true" className="h-full w-full object-cover" />
-        </div>
-        <div className="relative mx-auto max-w-2xl text-center">
-          <h2 className="font-display text-2xl font-bold md:text-4xl">A dança também pode fazer parte da sua história</h2>
-          <p className="mt-4 text-primary-foreground/85">Participe das oficinas, acompanhe as atividades ou construa novas parcerias com o Movimento em Cena.</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Link to="/contato" className="inline-flex h-12 items-center rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">Quero participar</Link>
-            <Link to="/contato" className="inline-flex h-12 items-center rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">Entre em contato</Link>
+      <div className="relative overflow-hidden rounded-[2.5rem]">
+        <img src={IMG.workshop} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-r from-graphite via-graphite/85 to-primary/70" />
+        <DanceOrnament variant="curtain" className="pointer-events-none absolute -left-4 top-0 h-40 w-40 text-primary-foreground/25" />
+        <DanceOrnament variant="curtain" className="pointer-events-none absolute -right-4 top-0 h-40 w-40 -scale-x-100 text-primary-foreground/25" />
+        <DanceOrnament variant="spotlight" className="pointer-events-none absolute inset-x-0 top-0 mx-auto h-24 w-40 text-gold/60" />
+
+        <div className="relative grid gap-8 p-8 text-primary-foreground md:grid-cols-12 md:items-center md:p-14">
+          <div className="md:col-span-8">
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/25 bg-primary-foreground/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.22em] backdrop-blur">
+              <Music className="h-3.5 w-3.5 text-gold" /> Próximo movimento
+            </span>
+            <h2 className="mt-4 font-display text-3xl font-bold md:text-4xl lg:text-5xl">
+              Seu próximo movimento pode começar aqui
+            </h2>
+            <p className="mt-4 max-w-xl text-primary-foreground/85">
+              Participe das atividades, conheça nossos projetos ou construa novas parcerias com o Movimento em Cena.
+            </p>
+            <DanceOrnament variant="flow" className="mt-5 h-3 w-40 text-gold" />
+          </div>
+          <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
+            <Link to="/contato" className="inline-flex h-12 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
+              Quero participar <ArrowRight className="h-4 w-4" />
+            </Link>
+            <Link to="/contato" className="inline-flex h-12 items-center rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">
+              Fale com nossa equipe
+            </Link>
           </div>
         </div>
       </div>

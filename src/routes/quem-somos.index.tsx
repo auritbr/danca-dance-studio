@@ -184,12 +184,35 @@ function QuemSomos() {
             </div>
           ))}
         </div>
-        <div className="mt-10 text-center">
-          <Link to="/projetos" className="inline-flex h-11 items-center rounded-full bg-primary px-6 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
-            Conheça nossos projetos
-          </Link>
-        </div>
       </Section>
+
+      {/* Final CTA */}
+      <section className="container-mc pb-16 md:pb-24">
+        <div className="relative overflow-hidden rounded-[2.5rem]">
+          <img src={IMG.group} alt="" aria-hidden="true" className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-wine via-primary/85 to-graphite/80" />
+          <DanceOrnament variant="curtain" className="pointer-events-none absolute -left-4 top-0 h-36 w-36 text-primary-foreground/25" />
+          <DanceOrnament variant="spotlight" className="pointer-events-none absolute right-6 top-0 h-24 w-40 text-gold/70" />
+          <DanceOrnament variant="flow" className="pointer-events-none absolute inset-x-0 bottom-6 mx-auto h-6 w-[70%] text-primary-foreground/30" />
+          <div className="relative grid gap-6 p-8 text-primary-foreground md:grid-cols-12 md:items-center md:p-14">
+            <div className="md:col-span-8">
+              <p className="font-display text-xs uppercase tracking-[0.28em] text-gold">Trajetória</p>
+              <h2 className="mt-2 font-display text-3xl font-bold md:text-4xl">Uma trajetória construída em movimento</h2>
+              <p className="mt-4 max-w-xl text-primary-foreground/85">
+                Conheça os projetos que transformam nossa experiência, nossos valores e nossa atuação em ações culturais concretas.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3 md:col-span-4 md:justify-end">
+              <Link to="/projetos" className="inline-flex h-11 items-center gap-2 rounded-full bg-primary-foreground px-6 text-sm font-semibold text-primary hover:bg-primary-foreground/90">
+                Conheça os projetos
+              </Link>
+              <Link to="/contato" className="inline-flex h-11 items-center rounded-full border border-primary-foreground/40 px-6 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10">
+                Fale conosco
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
