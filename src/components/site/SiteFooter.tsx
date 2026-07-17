@@ -40,8 +40,7 @@ export function SiteFooter() {
         </div>
 
         <FooterCol title="Institucional">
-          <FooterLink to="/quem-somos">Apresentação</FooterLink>
-          <FooterLink to="/quem-somos/historia">Nossa história</FooterLink>
+          <FooterLink to="/quem-somos">Quem Somos</FooterLink>
           <FooterLink to="/quem-somos/equipe">Equipe</FooterLink>
           <FooterLink to="/quem-somos/transparencia">Transparência</FooterLink>
           <FooterLink to="/noticias">Notícias</FooterLink>
