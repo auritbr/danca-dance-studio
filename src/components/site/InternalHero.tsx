@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ChevronRight } from "lucide-react";
 import type { ReactNode } from "react";
+import { HeroFlourish, DanceOrnament } from "./DanceOrnament";
 
 export type Crumb = { label: string; to?: any };
 
@@ -27,20 +28,33 @@ export function InternalHero({
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-graphite/85 to-graphite" />
         </div>
       )}
+      {/* Dance-themed decorative flourishes */}
+      <HeroFlourish className="pointer-events-none absolute -right-16 -top-10 hidden h-[320px] w-[640px] text-gold/60 md:block" />
+      <HeroFlourish className="pointer-events-none absolute -left-24 bottom-[-60px] h-[260px] w-[540px] text-lilac/40" />
+      <svg aria-hidden viewBox="0 0 200 200" className="pointer-events-none absolute right-6 bottom-6 hidden h-24 w-24 text-gold/50 md:block">
+        <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1" fill="none" />
+        <circle cx="100" cy="100" r="55" stroke="currentColor" strokeWidth="0.8" fill="none" opacity="0.6" />
+        <circle cx="100" cy="100" r="30" stroke="currentColor" strokeWidth="0.6" fill="none" opacity="0.4" />
+      </svg>
       <div className="container-mc relative py-14 md:py-20">
         {crumbs && crumbs.length > 0 && <Breadcrumbs items={crumbs} />}
         {eyebrow && (
-          <p className="mt-4 font-display text-xs uppercase tracking-[0.28em] text-gold">{eyebrow}</p>
+          <div className="mt-4 flex items-center gap-3">
+            <span aria-hidden className="h-px w-8 bg-gold" />
+            <p className="font-display text-xs uppercase tracking-[0.28em] text-gold">{eyebrow}</p>
+          </div>
         )}
         <h1 className="mt-3 font-display text-3xl font-bold leading-tight md:text-5xl">{title}</h1>
         {description && (
           <p className="mt-4 max-w-2xl text-base text-primary-foreground/85 md:text-lg">{description}</p>
         )}
+        <DanceOrnament variant="flow" className="mt-6 h-4 w-40 text-gold/80" />
         {children && <div className="mt-6">{children}</div>}
       </div>
     </section>
   );
 }
+
 
 export function Breadcrumbs({ items }: { items: Crumb[] }) {
   return (
