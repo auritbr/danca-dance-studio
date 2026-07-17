@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { InternalHero, Section } from "@/components/site/InternalHero";
-import { IMG, PROJECTS, NEWS, MODALITIES } from "@/lib/site-data";
+import { IMG, PROJECTS, MODALITIES } from "@/lib/site-data";
 import { ArrowRight, Calendar, Users, MapPin, Target, ClipboardList, Sparkles } from "lucide-react";
 
 const DETAILS: Record<string, {
