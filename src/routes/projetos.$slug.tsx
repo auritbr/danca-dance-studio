@@ -180,19 +180,6 @@ function ProjectPage() {
         </div>
       </Section>
 
-      <Section eyebrow="Notícias" title="Notícias relacionadas">
-        <div className="grid gap-4 md:grid-cols-3">
-          {NEWS.slice(0, 3).map((n) => (
-            <Link key={n.slug} to="/noticias/$slug" params={{ slug: n.slug }} className="group overflow-hidden rounded-2xl border border-border bg-card shadow-sm">
-              <img src={n.image} alt={n.title} className="aspect-[16/10] w-full object-cover" loading="lazy" />
-              <div className="p-4">
-                <div className="text-[10px] uppercase tracking-widest text-primary">{n.tag}</div>
-                <h3 className="mt-1 font-display text-sm font-semibold text-foreground group-hover:text-primary">{n.title}</h3>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </Section>
 
       <section className="bg-primary text-primary-foreground">
         <div className="container-mc py-14 text-center">
