@@ -177,19 +177,3 @@ function AccBtn({ icon, children, onClick }: { icon: React.ReactNode; children: 
   );
 }
 
-function VLibrasPanel({ onClose }: { onClose: () => void }) {
-  return (
-    <Sheet title="Tradução em Libras" onClose={onClose}>
-      <p className="text-sm text-muted-foreground">
-        Nosso site oferece integração com o VLibras, tradutor da comunicação digital para a Língua Brasileira de Sinais.
-      </p>
-      <div className="mt-4 rounded-lg border border-border bg-secondary p-4">
-        <p className="text-sm text-secondary-foreground">
-          Para acionar a tradução em Libras, ative o widget oficial do Governo Federal. Em publicações oficiais, o widget será
-          carregado automaticamente e ficará disponível neste botão sem sobrepor os demais recursos fixos.
-        </p>
-      </div>
-      <button onClick={onClose} className="mt-5 h-10 rounded-md bg-primary px-4 text-sm font-medium text-primary-foreground">Entendi</button>
-    </Sheet>
-  );
-}
