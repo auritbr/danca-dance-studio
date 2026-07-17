@@ -16,7 +16,7 @@ import {
   Megaphone,
   ShieldCheck,
 } from "lucide-react";
-import { InternalHero, Section } from "@/components/site/InternalHero";
+import { InternalHero } from "@/components/site/InternalHero";
 import { PageBreadcrumbs } from "@/components/site/PageBreadcrumbs";
 import { DanceOrnament } from "@/components/site/DanceOrnament";
 import { DOCUMENTS, SITE } from "@/lib/site-data";
