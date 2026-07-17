@@ -206,7 +206,9 @@ function Meta({ icon, label, value }: { icon: React.ReactNode; label: string; va
 
 function Card({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+    <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-6 shadow-sm">
+      <span aria-hidden className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-primary via-gold to-primary/40" />
+      <DanceOrnament variant="flow" className="pointer-events-none absolute -right-4 -top-2 h-10 w-32 text-primary/10" />
       <h3 className="font-display text-base font-semibold text-primary">{title}</h3>
       <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
         {items.map((it) => <li key={it} className="flex gap-2"><span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />{it}</li>)}
@@ -214,3 +216,4 @@ function Card({ title, items }: { title: string; items: string[] }) {
     </div>
   );
 }
+
