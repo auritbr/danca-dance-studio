@@ -3,7 +3,7 @@ import { Cookie, Accessibility, MessageCircle, X, Minus, Plus, Contrast, Eye, Un
 import { SITE } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
-type Panel = null | "cookies" | "access" | "vlibras";
+type Panel = null | "cookies" | "access";
 
 export function FloatingWidgets() {
   const [panel, setPanel] = useState<Panel>(null);
