@@ -124,7 +124,7 @@ function AboutSection() {
               </li>
             ))}
           </ul>
-          <Link to="/quem-somos/historia" className="mt-7 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
+          <Link to="/quem-somos" className="mt-7 inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-semibold text-primary-foreground hover:bg-primary/90">
             Conheça nossa história <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
