@@ -70,7 +70,6 @@ function NewsPage() {
         title={news.title}
         description={news.excerpt}
         image={news.image}
-        crumbs={[{ label: "Início", to: "/" }, { label: "Notícias", to: "/noticias" }, { label: news.title }]}
       >
         <div className="flex flex-wrap items-center gap-3 text-xs text-primary-foreground/80">
           <span>{news.date}</span>
@@ -79,10 +78,11 @@ function NewsPage() {
         </div>
       </InternalHero>
 
+      <PageBreadcrumbs items={[{ label: "Início", to: "/" }, { label: "Notícias", to: "/noticias" }, { label: news.title }]} />
+
       <Section>
         <article className="mx-auto max-w-3xl">
-          <img src={news.image} alt={news.title} className="aspect-[16/9] w-full rounded-2xl object-cover shadow" />
-          <div className="mt-6 space-y-4 text-base leading-relaxed text-foreground/90">
+          <div className="space-y-4 text-base leading-relaxed text-foreground/90">
             {CONTENT.split("\n\n").map((p, i) => <p key={i}>{p}</p>)}
             <h2 className="mt-8 font-display text-xl font-semibold text-foreground">Uma programação diversa</h2>
             <p>As atividades incluíram encontros formativos, apresentações públicas e rodas de conversa, aproximando a comunidade dos processos de criação artística.</p>
