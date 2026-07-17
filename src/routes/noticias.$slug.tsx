@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
 import { InternalHero, Section } from "@/components/site/InternalHero";
+import { PageBreadcrumbs } from "@/components/site/PageBreadcrumbs";
 import { IMG, NEWS } from "@/lib/site-data";
 import { Facebook, Linkedin, Link as LinkIcon, ArrowRight, X, ChevronLeft, ChevronRight, MessageCircle } from "lucide-react";
 
