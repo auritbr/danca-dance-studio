@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Cookie, Accessibility, MessageCircle, Hand, X, Minus, Plus, Contrast, Eye, Underline, Focus, BookOpen, Pause, RotateCcw } from "lucide-react";
+import { Cookie, Accessibility, MessageCircle, X, Minus, Plus, Contrast, Eye, Underline, Focus, BookOpen, Pause, RotateCcw } from "lucide-react";
 import { SITE } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
