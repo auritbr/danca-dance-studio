@@ -15,7 +15,7 @@ const ALL_NEWS = [
 
 const PAGE_SIZE = 6;
 
-export const Route = createFileRoute("/noticias")({
+export const Route = createFileRoute("/noticias/")({
   head: () => ({
     meta: [
       { title: "Notícias — Movimento em Cena" },

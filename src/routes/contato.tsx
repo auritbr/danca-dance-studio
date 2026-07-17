@@ -12,7 +12,7 @@ const schema = z.object({
   subject: z.string().trim().min(3, "Informe um assunto").max(120),
   reason: z.string().min(1, "Selecione um motivo"),
   message: z.string().trim().min(10, "Escreva uma mensagem com pelo menos 10 caracteres").max(1500),
-  consent: z.literal(true, { message: "É necessário aceitar a Política de Privacidade" }),
+  consent: z.boolean().refine((v) => v === true, { message: "É necessário aceitar a Política de Privacidade" }),
 });
 
 const REASONS = ["Inscrições", "Projetos", "Apresentações", "Parcerias", "Imprensa", "Voluntariado", "Outros"];

@@ -13,7 +13,7 @@ const ALL = [
   { slug: "cena-que-inclui", title: "Cena que Inclui", category: "Inclusão", status: "Em andamento", period: "2024 — 2026", audience: "Pessoas idosas e grupos intergeracionais", image: IMG.seniors, summary: "Ações de inclusão pela dança para pessoas idosas e coletivos intergeracionais." },
 ];
 
-export const Route = createFileRoute("/projetos")({
+export const Route = createFileRoute("/projetos/")({
   head: () => ({
     meta: [
       { title: "Projetos — Movimento em Cena" },

@@ -3,7 +3,7 @@ import { InternalHero, Section } from "@/components/site/InternalHero";
 import { IMG } from "@/lib/site-data";
 import { Sparkles, Users, HeartHandshake, Compass, Music, Award, Heart, Palette } from "lucide-react";
 
-export const Route = createFileRoute("/quem-somos")({
+export const Route = createFileRoute("/quem-somos/")({
   head: () => ({
     meta: [
       { title: "Quem Somos — Movimento em Cena" },

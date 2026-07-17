@@ -11,7 +11,7 @@ const YEARS = [
   { year: "2022", cover: IMG.duo, count: 6 },
 ];
 
-export const Route = createFileRoute("/galeria")({
+export const Route = createFileRoute("/galeria/")({
   head: () => ({
     meta: [
       { title: "Galeria — Movimento em Cena" },
